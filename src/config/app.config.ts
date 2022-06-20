@@ -7,7 +7,13 @@
 
 // import { MenuConfig } from '@app/config';
 
-import package_json from '../../package.json';
+import pjson from '../../package.json';
+
+// console.log(pjson, pjson.version);
+// console.log(String(pjson));
+// console.log(JSON.parse(String(pjson)));
+
+const package_json = JSON.parse(String(pjson));
 
 const fens = {
     empty: '8/8/8/8/8/8/8/8 w - - 0 1',

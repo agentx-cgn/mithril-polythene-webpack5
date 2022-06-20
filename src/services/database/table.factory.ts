@@ -5,7 +5,7 @@ import { AppConfig, OptionsConfig }  from '@app/config';
 import { ITable, TTableNames, TRow, TTableTemplates } from './database.types';
 import { H }   from './../helper.service';
 
-const DEBUG = true;
+const DEBUG = false;
 
 const dumps  = {
     Usage:   [{uuid: '0', laststart: Date.now(), lastend: Date.now(), usage: 0}],

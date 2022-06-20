@@ -13,7 +13,7 @@ const fontInlineSizeLimit  = 10000;
     asset/resource : Equivalent to file-loader.
     asset/inline: Equivalent to url-loader.
     asset/source: Equivalent to raw-loader.
-    asset: Equivalent to url-loader with a limit size.
+    asset/raw:    Equivalent to url-loader with a limit size.
     Raw-loader imports your file as a string,
     Url-loader is used to inline your file as a data URI and
     file-loader is used to emit your file in the output directory.
@@ -26,10 +26,10 @@ const rules = [
         test: /\.wasm\.js$/,
         // loaders: ['wasm-loader'],
     },
-    // { doesn't work w/ packagae.json
-    //     test: /\.(json)$/i,
-    //     type: 'asset/source',
-    // },
+    {
+        test: /\.(json)$/i,
+        type: 'asset/source',
+    },
     {
         test: /\.tsx?$/,
         use: 'ts-loader',

@@ -2,7 +2,12 @@
   "name": "mithril-webpack-5",
   "version": "0.1.1",
   "description": "an opinionated mithril polythene webpack seed project",
-  "keywords": ["mithril", "webpack", "seed"],
+  "keywords": [
+    "mithril",
+    "webpack",
+    "seed",
+    "polythene"
+  ],
   "homepage": "https://agentx-cgn.github.io/mithril-polythene-webpack5/",
   "bugs": {
     "url": "https://github.com/agentx-cgn/mithril-polythene-webpack5/issues"
