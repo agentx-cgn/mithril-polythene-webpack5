@@ -1,0 +1,60 @@
+{
+  "name": "mithril-webpack-5",
+  "version": "0.1.1",
+  "description": "an opinionated mithril polythene webpack seed project",
+  "keywords": ["mithril", "webpack", "seed"],
+  "homepage": "https://agentx-cgn.github.io/mithril-polythene-webpack5/",
+  "bugs": {
+    "url": "https://github.com/agentx-cgn/mithril-polythene-webpack5/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentx-cgn/mithril-polythene-webpack5"
+  },
+  "author": "agentx-cgn",
+  "license": "MIT",
+  "main": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server --config ./config/webpack/webpack.config.js",
+    "build": "cross-env NODE_ENV=production  webpack --progress --config ./config/webpack/webpack.config.js",
+    "publish": "npm run build && rm -rf ./docs/* && cp -r ./dist/* ./docs && git add . && git commit -m 'update pages' && git push",
+    "chk:lint": "eslint src/**/*.ts",
+    "chk:tsc": "npx tsc --project tsconfig.json --noEmit",
+    "chk:circ": "madge --warning --circular  --ts-config ./tsconfig.json  --extensions ts ./src"
+  },
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "local-storage": "^2.0.0",
+    "mithril": "^2.2.2",
+    "polythene-css": "^1.7.5",
+    "polythene-mithril": "^1.7.5",
+    "screenfull": "^6.0.1"
+  },
+  "devDependencies": {
+    "@types/mithril": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/parser": "^5.26.0",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.67",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.7.1",
+    "eslint": "^8.16.0",
+    "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
+    "html-loader": "^3.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "sass": "^1.52.1",
+    "sass-loader": "^13.0.0",
+    "style-loader": "^3.3.1",
+    "tachyons": "^4.12.0",
+    "ts-loader": "^9.3.0",
+    "typescript": "^4.7.3",
+    "webpack": "^5.72.1",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-merge": "^5.8.0"
+  }
+}
