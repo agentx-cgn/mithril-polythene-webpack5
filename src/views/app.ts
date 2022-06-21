@@ -86,7 +86,9 @@ const App = {
         ;
 
         // take over error handling
-        window.onerror = function () {
+        window.onerror = function (...args) {
+            const [message, source, lineno, colno, error] = args;
+            if ((message as string).includes('Uncaught')) return;
             console.warn('Error :', arguments);
         };
         window.onunhandledrejection = function (e) {

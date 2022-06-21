@@ -1,7 +1,8 @@
 
 cell-aside {
 
-  background-color: rgb(121, 97, 97);
+  background-color:rgb(241, 228, 228);
+
   outline-style: dotted;
   outline-width: 1px;
   outline-color: orange;
@@ -9,7 +10,7 @@ cell-aside {
   flex-grow: 0;
   flex-shrink: 0;
 
-  width: 200px;
-  height: 100%;
+  max-width: 256px;
+  min-height: 100%;
 
 }

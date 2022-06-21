@@ -1,8 +1,44 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { all as mergeAll } from 'deepmerge';
 import { IObj } from '@app/domain';
 
 const H = {
+
+  cssvar ( name: string ): string {
+
+    const isSameDomain = (styleSheet: any) => {
+      if (!styleSheet.href) {
+        return true;
+      }
+      return styleSheet.href.indexOf(window.location.origin) === 0;
+    };
+
+    const isStyleRule = (rule: any) => rule.type === 1;
+
+    const getCSSCustomPropIndex = () =>
+      [...document.styleSheets]
+        .filter(isSameDomain)
+        .reduce( (finalArr: any[], sheet) =>
+          finalArr.concat(
+            [...sheet.cssRules].filter(isStyleRule).reduce((propValArr: any[], rule: any) => {
+              const props = [...rule.style]
+                .map((propName: string) => [
+                  propName.trim(),
+                  (rule.style as any).getPropertyValue(propName).trim()
+                ])
+                .filter(([propName]) => propName.indexOf("--") === 0)
+              ;
+              return [...propValArr, ...props];
+            }, [])
+          ),
+        []
+      )
+    ;
+
+    return getCSSCustomPropIndex().find(([propName]) => propName === name)[1] || '';
+
+  },
 
   deepassign: mergeAll,
 

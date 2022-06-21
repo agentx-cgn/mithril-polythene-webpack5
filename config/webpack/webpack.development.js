@@ -2,7 +2,7 @@
 
 const devConfig = {
     mode: 'development',
-    devtool: 'eval-source-map',             // slow
+    devtool: 'source-map',             // slow eval-source-map
     devServer: {
         hot: true,
         server: {

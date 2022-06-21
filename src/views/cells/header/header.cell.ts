@@ -14,7 +14,7 @@ const HeaderCell: IDefComponent = {
     const reload = (e: IEvent) => {e.redraw = false; window.location.reload();};
     const width  = innerWidth >=720 ? '360px' : '100vw';
 
-    return m('header.w-100',
+    return m('header',
       m('div.controls.flex', { style: 'width:' + width }, [
         m(NavigationCell, { route, params }),
         HistoryService.canBack

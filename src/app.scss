@@ -60,6 +60,10 @@ section.content {
     background: #888;
     // background: transparent;  // debug
 }
+section.aside {
+    background: #888;
+    // background: transparent;  // debug
+}
 
 div.pages {
     background-color: #8888;
@@ -92,13 +96,13 @@ input:focus {
   text-overflow: ellipsis;
 }
 
-.noselect {
-  user-select: none;         /* standard syntax */
-  -webkit-user-select: none; /* webkit (safari, chrome) browsers */
-  -moz-user-select: none;    /* mozilla browsers */
-  -khtml-user-select: none;  /* webkit (konqueror) browsers */
-  -ms-user-select: none;     /* IE10+ */
-}
+// .noselect {
+//   user-select: none;         /* standard syntax */
+//   -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+//   -moz-user-select: none;    /* mozilla browsers */
+//   -khtml-user-select: none;  /* webkit (konqueror) browsers */
+//   -ms-user-select: none;     /* IE10+ */
+// }
 
 button.flexcontrol {
     color: white;

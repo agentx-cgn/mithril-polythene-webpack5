@@ -11,15 +11,45 @@
 //    f4 =   1.25rem
 //    f5 =   1.0rem
 
+:root {
+
+    --mediabreak1: 360px;
+    --mediabreak1one: 360px;
+
+    --mediabreak2: 720px;
+    --mediabreak2one: 721px;
+
+    --mediabreak3: 1024px;
+    --mediabreak3one: 1025px;
+
+    --header-height: 42px;
+    --section-title-height: 84px;
+    --footer-height: 24px;
+    --toolbar-height: 48px;
+    --analyzer-width: 128px;
+    --evaluation-width: 24px;
+    --page-width: 360px;
+    --pages-width: 720px;
+        // needed for square board
+    --content-neg-width:        var(--header-height) +           //   42
+                                var(--section-title-height) +    //   84
+                            4 * var(--toolbar-height) ´+         //  192
+                                var(--footer-height);            //   24
+}                                                                // 342
+
 
 cell-layout {
     height: 100%;
     display: flex;
     flex-direction: column;
 }
+
 header {
     width: 100%;
+    height: var(--header-height);
+    flex: 0 0 var(--header-height);
     nav {
+        height: var(--header-height);
         > label {
             left: 0;
             top: 0;
@@ -27,18 +57,6 @@ header {
     }
 }
 
-// BARS, Menus
-header, nav,
-div.board-bar-top,
-div.board-bar-bot,
-div.gm-bar-flags,
-div.gm-bar-buttons {
-    height: 2.625rem;
-}
-div.chessboard {
-    margin: -2px;
-    flex: 0 0 auto;
-}
 main {
     overflow: hidden;
     height: 100%;
@@ -47,31 +65,65 @@ main {
     flex: 1 0;
 }
 
-div.pages {
-    display: flex;
-    position: relative;
-    // width: calc(4 * 100vw); //TODO: ??
-    width: 720px; // here's some background alpha
-}
-div.page {
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-    height: 100%;
+cell-footer {
+    min-height: 24px;
+    flex: 0 0 24px;
     width: 100%;
-    max-width: 100%;
-    z-index: 10;
 }
 
+
 section.stage {
+
     height: 100%;
     left: 0;
     position: relative;
+
+    div.pages {
+        display: flex;
+        position: relative;
+        // width: calc(4 * 100vw); //TODO: ??
+        width: 720px; // here's some background alpha
+    }
+    div.page {
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        z-index: 10;
+    }
 }
+
 section.content {
+
     flex: 1 0;
     z-index: 20;
+    // z-index: 0;     // debug
+
+    // needed for square board
+    // max-width: calc( 100vh - var(--content-neg-width) );
+    max-width: calc( 100vh - 342px + 24px);
+
+    board-container {
+        max-height: calc( 100vh - 342px);
+        // min-height: calc( 100vh - 340px );
+        // max-height: calc( 100vh  - var(--content-neg-width));
+    }
+
+    cell-evaluation {
+        min-height: calc( 100vh - 342px );
+        // max-height: calc( 100vh - 340px );
+        // max-height: calc( 100vh  - var(--content-neg-width));
+    }
+}
+
+section.aside {
+    // flex: 1 1 var(--analyzer-width);
+    // z-index: 20;
+    // max-width: 0;
+    display:none
     // z-index: 0;     // debug
 }
 
@@ -99,31 +151,17 @@ nav {
     z-index: 12;
 }
 
-// BOARD
-div.board-bar-top,
-div.board-bar-bot {
-    padding: 10px 1rem 6px 1rem;
-}
-
 // small screen (mobile)
 @media only screen and (max-width: 360px) {
     main {
         width: 100vw;
         margin: 0 auto;
     }
-    section.stage {
-        width: 100vw;
+    section.aside {
+        width: 0;
     }
     section.content {
         display:none
-    }
-    .board-bar.top {
-        background: rgb(136,102,102);
-        background: linear-gradient(0deg, #866 20%, #644 100%);
-    }
-    .board-bar.bottom {
-        background: rgb(136,102,102);
-        background: linear-gradient(0deg, #866 20%, #644 100%);
     }
     div.pages {
         left: -100vw;
@@ -161,20 +199,17 @@ div.board-bar-bot {
         }
 
     }
-    div.chessboard {
-        width:  calc(100vw + 4px);
-        height: calc(100vw + 4px);
-    }
+
 
 }
 
 @media only screen and (min-width: 361px) and (max-width: 720px) {
     main {
-        width: 360px;
+        width: var(--page-width);
         margin: 0 auto;
     }
     section.stage {
-        width: 360px;
+        width: var(--page-width);
     }
     section.content {
         display:none
@@ -189,14 +224,14 @@ div.board-bar-bot {
         background: linear-gradient(0deg, #644 20%, #866 100%);
     }
     div.pages {
-        left: -360px;
+        left: calc(-1 * var(--page-width));
         // left: 0;  // debug
         height: 100%;
     }
     div.slide {
         position: absolute;
-        min-width: 360px;
-        width: 360px;
+        min-width: var(--page-width);
+        width: var(--page-width);
         height: 100%;
         top: 0;
         &.left {
@@ -217,27 +252,24 @@ div.board-bar-bot {
             transform: translateX(0);
         }
         &.trans-center {
-            -webkit-transform: translateX(360px);
-            transform: translateX(360px);
+            -webkit-transform: translateX(var(--page-width));
+            transform: translateX(var(--page-width));
         }
         &.trans-right {
-            -webkit-transform: translateX(calc(2 * 360px));
-            transform: translateX(calc(2 * 360px));
+            -webkit-transform: translateX(calc(2 * var(--page-width)));
+            transform: translateX(calc(2 * var(--page-width)));
         }
-    }
-    div.chessboard {
-        width: 364px;
-        height: 364px;
     }
 
 }
+
 @media only screen and (min-width: 721px) {
     main {
         width: 100vw;
         margin: 0 auto;
     }
     section.stage {
-        width: 360px;
+        width: var(--page-width);
     }
     .board-bar.top {
         background: rgb(136,102,102);
@@ -248,14 +280,14 @@ div.board-bar-bot {
         background: linear-gradient(0deg, #866 20%, #644 100%);
     }
     div.pages {
-        left: -360px;
+        left: calc( -1 *  var(--page-width));
         // left: 0; // debug
         height: 100%;
     }
     div.slide {
         position: absolute;
-        min-width: 360px;
-        width: 360px;
+        min-width: var(--page-width);
+        width: var(--page-width);
         height: 100%;
         top: 0;
         &.left {
@@ -276,13 +308,22 @@ div.board-bar-bot {
             transform: translateX(0);
         }
         &.trans-center {
-            -webkit-transform: translateX(360px);
-            transform: translateX(360px);
+            -webkit-transform: translateX(var(--page-width));
+            transform: translateX(var(--page-width));
         }
         &.trans-right {
-            -webkit-transform: translateX(calc(2 * 360px));
-            transform: translateX(calc(2 * 360px));
+            -webkit-transform: translateX(calc(2 * var(--page-width)));
+            transform: translateX(calc(2 * var(--page-width)));
         }
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+
+    section.aside {
+        // display: flex;
+        // max-width: var(---analyzer-width);
     }
 
 }

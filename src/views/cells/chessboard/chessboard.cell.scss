@@ -1,3 +1,26 @@
+
+
+board-container {
+  flex: 0 0 ;
+  width: 100%;
+}
+
+board-container-sizer  {
+  display: block;
+  width: 0;
+  float: left;
+  padding-bottom: calc(100% - var(--evaluation-width));
+}
+
+cell-evaluation {
+  display: block;
+  width: 24px;
+  background-color: rgb(53, 168, 154);
+  // min-height: 200px;
+  float: left;
+
+}
+
 cell-chessboard {
 
   display: block;
@@ -5,22 +28,15 @@ cell-chessboard {
   color: wheat;
 
   background-color: rgb(121, 97, 97);
+
   outline-style: dotted;
-  outline-width: 1px;
   outline-color: orange;
 
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
 
-  min-width: 100%;
-  min-height: 200px;
-
-  // &::after {
-  //   content: '';
-  //   display: block;
-  //   padding-bottom: 100%;
-  //   width: 0;
-  // }
+  // width: calc(100%);
+  // min-height: 200px;
 
 }
