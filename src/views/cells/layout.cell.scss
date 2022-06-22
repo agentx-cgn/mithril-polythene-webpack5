@@ -106,13 +106,13 @@ section.content {
     // max-width: calc( 100vh - var(--content-neg-width) );
     max-width: calc( 100vh - 342px + 24px);
 
-    board-container {
+    cell-board {
         max-height: calc( 100vh - 342px);
         // min-height: calc( 100vh - 340px );
         // max-height: calc( 100vh  - var(--content-neg-width));
     }
 
-    cell-evaluation {
+    cell-board-evaluation {
         min-height: calc( 100vh - 342px );
         // max-height: calc( 100vh - 340px );
         // max-height: calc( 100vh  - var(--content-neg-width));

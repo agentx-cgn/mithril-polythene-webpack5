@@ -1,42 +1,36 @@
 
-
-board-container {
+cell-board {
   flex: 0 0 ;
   width: 100%;
 }
 
-board-container-sizer  {
+cell-board-sizer  {
   display: block;
   width: 0;
   float: left;
   padding-bottom: calc(100% - var(--evaluation-width));
 }
 
-cell-evaluation {
+cell-board-evaluation {
   display: block;
   width: 24px;
   background-color: rgb(53, 168, 154);
-  // min-height: 200px;
   float: left;
 
 }
 
-cell-chessboard {
+cell-board-container {
 
-  display: block;
+  display: grid;
 
   color: wheat;
 
   background-color: rgb(121, 97, 97);
 
-  outline-style: dotted;
-  outline-color: orange;
-
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
 
-  // width: calc(100%);
-  // min-height: 200px;
+  float: left
 
 }

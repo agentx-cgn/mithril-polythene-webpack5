@@ -3,7 +3,7 @@ import m from 'mithril';
 import './content.cell.scss';
 
 import { ToolbarCell } from '../toolbar/toolbar.cell';
-import { ChessboardCell } from '../chessboard/chessboard.cell';
+import { ChessboardCell } from '../board/board.cell';
 import { IDefCellComponent } from '@app/domain';
 import { SectionTitleAtom } from '@app/atoms';
 

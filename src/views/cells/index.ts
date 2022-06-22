@@ -4,4 +4,4 @@ export * from './stage.cell';
 export * from './content/content.cell';
 export * from './aside/aside.cell';
 export * from './header/header.cell';
-export * from './chessboard/chessboard.cell';
+export * from './board/board.cell';
